@@ -1,4 +1,4 @@
-package com.example.listadecompras
+package com.example.listadecompras.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

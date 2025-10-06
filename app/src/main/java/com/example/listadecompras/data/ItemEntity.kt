@@ -2,7 +2,7 @@ package com.example.listadecompras.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.listadecompras.ItemModel
+import com.example.listadecompras.model.ItemModel
 
 @Entity
 class ItemEntity(
@@ -13,6 +13,7 @@ class ItemEntity(
 
 fun ItemEntity.toModel(onRemove: (ItemModel) -> Unit): ItemModel {
     return ItemModel(
+        id = this.id,
         name = this.name,
         onRemove = onRemove
     )

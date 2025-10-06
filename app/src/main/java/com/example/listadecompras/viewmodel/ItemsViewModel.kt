@@ -1,11 +1,14 @@
-package com.example.listadecompras
+package com.example.listadecompras.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.listadecompras.data.ItemEntity
 
 import com.example.listadecompras.data.ItemsDatabase
 import com.example.listadecompras.data.toModel
+import com.example.listadecompras.model.ItemModel
+import com.example.listadecompras.model.toEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -24,11 +27,19 @@ class ItemsViewModel(
 
 
     fun addItem(name: String) {
-
+        viewModelScope.launch(Dispatchers.IO) {
+            val entity = ItemEntity(id = 0, name = name)
+            database.itemsDao().insert(entity)
+            fetchAll()
+        }
     }
 
     private fun removeItem(item: ItemModel) {
-
+        viewModelScope.launch(Dispatchers.IO) {
+            val entity = item.toEntity()
+            database.itemsDao().delete(entity)
+            fetchAll()
+        }
     }
 
     private suspend fun fetchAll() {

@@ -1,4 +1,4 @@
-package com.example.listadecompras
+package com.example.listadecompras.ui
 
 import android.view. LayoutInflater
 import android.view. View
@@ -6,6 +6,8 @@ import android.view. ViewGroup
 import android.widget.ImageButton
 import android.widget. TextView
 import androidx.recyclerview.widget. RecyclerView
+import com.example.listadecompras.R
+import com.example.listadecompras.model.ItemModel
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter .ItemViewHolder >()
 {
@@ -17,7 +19,8 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter .ItemViewHolder >()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_layout,
+        val view = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_layout,
             parent, false)
         return ItemViewHolder(view)
     }
